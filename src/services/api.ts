@@ -41,7 +41,7 @@ import { mockBooks, mockReadingLists } from './mockData';
  */
 
 // TODO: Uncomment this after deploying API Gateway (Week 2, Day 4)
-// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
+ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
 
 /**
  * TODO: Implement this function in Week 3, Day 4
@@ -90,9 +90,9 @@ import { mockBooks, mockReadingLists } from './mockData';
  */
 export async function getBooks(): Promise<Book[]> {
   // TODO: Remove this mock implementation after deploying Lambda
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(mockBooks), 500);
-  });
+  const response = await fetch(`${API_BASE_URL}/books`);
+  if (!response.ok) throw new Error('Failed to fetch books');
+  return response.json();
 }
 
 /**
@@ -114,12 +114,10 @@ export async function getBooks(): Promise<Book[]> {
  */
 export async function getBook(id: string): Promise<Book | null> {
   // TODO: Remove this mock implementation after deploying Lambda
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const book = mockBooks.find((b) => b.id === id);
-      resolve(book || null);
-    }, 300);
-  });
+  const response = await fetch(`${API_BASE_URL}/books/${id}`);
+  if (response.status === 404) return null;
+  if (!response.ok) throw new Error('Failed to fetch book');
+  return response.json();
 }
 
 /**
