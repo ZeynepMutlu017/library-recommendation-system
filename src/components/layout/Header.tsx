@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useAuth } from '@/hooks/useAuth';
 import { Link } from 'react-router-dom';
 import { Navigation } from './Navigation';
 
@@ -9,7 +10,7 @@ import { Navigation } from './Navigation';
  */
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const { user, isAuthenticated, logout } = useAuth();
   return (
     <header className="glass-effect sticky top-0 z-50 border-b border-white/20 shadow-lg">
       <div className="container mx-auto px-4">
@@ -42,20 +43,36 @@ export function Header() {
           </div>
 
           {/* User Actions */}
-          <div className="hidden md:flex items-center space-x-3">
-            <Link
-              to="/login"
-              className="text-slate-700 hover:text-violet-600 transition-colors font-semibold px-4 py-2 rounded-lg hover:bg-violet-50"
-            >
-              Login
-            </Link>
-            <Link
-              to="/signup"
-              className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-6 py-2.5 rounded-xl hover:from-violet-700 hover:to-indigo-700 transition-all shadow-lg shadow-violet-500/30 hover:shadow-xl hover:shadow-violet-500/40 font-semibold transform hover:-translate-y-0.5"
-            >
-              Sign Up
-            </Link>
-          </div>
+         <div className="hidden md:flex items-center space-x-3">
+  {isAuthenticated && user ? (
+    <>
+      <span className="text-slate-700 font-semibold">
+        Hi, {user.name}
+      </span>
+      <button
+        onClick={logout}
+        className="text-slate-700 hover:text-violet-600 transition-colors font-semibold px-4 py-2 rounded-lg hover:bg-violet-50"
+      >
+        Logout
+      </button>
+    </>
+  ) : (
+    <>
+      <Link
+        to="/login"
+        className="text-slate-700 hover:text-violet-600 transition-colors font-semibold px-4 py-2 rounded-lg hover:bg-violet-50"
+      >
+        Login
+      </Link>
+      <Link
+        to="/signup"
+        className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-6 py-2.5 rounded-xl hover:from-violet-700 hover:to-indigo-700 transition-all shadow-lg shadow-violet-500/30 hover:shadow-xl hover:shadow-violet-500/40 font-semibold transform hover:-translate-y-0.5"
+      >
+        Sign Up
+      </Link>
+    </>
+  )}
+</div>
 
           {/* Mobile Menu Button */}
           <button
