@@ -9,8 +9,8 @@ phases:
     commands:
       - echo "VITE_API_BASE_URL=https://8d0k7vpis2.execute-api.us-east-1.amazonaws.com/dev" > .env
       - echo "VITE_COGNITO_USER_POOL_ID=us-east-1_fI1DXKZCj" >> .env
-      - echo "VITE_COGNITO_CLIENT_ID=jzcfu8" >> .env
       - echo "VITE_COGNITO_CLIENT_ID=6ccbffnjq3drvrk6s2emljip0m" >> .env
+      - echo "VITE_COGNITO_REGION=us-east-1" >> .env
       - npm run build
 artifacts:
   files:
