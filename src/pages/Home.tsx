@@ -26,11 +26,11 @@ export function Home() {
             <span className="text-sm font-semibold text-white">✨ Powered by AI</span>
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-extrabold mb-6 text-white leading-tight tracking-tight">
-            Welcome to My
+          <h1 className="text-6xl md:text-8xl font-extrabold mb-6 leading-tight tracking-tight">
+           <span className="bg-gradient-to-r from-red-400 via-slate-900 to-red-400 bg-clip-text text-transparent">
+            Welcome to 
             <br />
-            <span className="bg-gradient-to-r from-red-400 via-slate-900 to-red-400 bg-clip-text text-transparent">
-              Library
+             My Library
             </span>
           </h1>
 
