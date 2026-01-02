@@ -27,16 +27,15 @@ export function Home() {
           </div>
 
           <h1 className="text-6xl md:text-8xl font-extrabold mb-6 text-white leading-tight tracking-tight">
-            Discover Your Next
+            Welcome to My
             <br />
-            <span className="bg-gradient-to-r from-violet-300 via-pink-300 to-indigo-300 bg-clip-text text-transparent">
-              Favorite Book
+            <span className="bg-gradient-to-r from-red-400 via-slate-900 to-red-400 bg-clip-text text-transparent">
+              Library
             </span>
           </h1>
 
           <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto text-slate-200 leading-relaxed font-light">
-            AI-powered recommendations tailored to your unique reading preferences. Discover books
-            you'll love with intelligent suggestions.
+            Your personal AI librarian - Discover books with smart recommendations
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
