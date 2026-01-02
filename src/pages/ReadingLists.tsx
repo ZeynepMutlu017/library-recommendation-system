@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/common/Button';
 import { Modal } from '@/components/common/Modal';
 import { Input } from '@/components/common/Input';
@@ -12,6 +13,7 @@ import { handleApiError, showSuccess } from '@/utils/errorHandling';
  * ReadingLists page component
  */
 export function ReadingLists() {
+  const { user } = useAuth()
   const [lists, setLists] = useState<ReadingList[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,7 +46,7 @@ export function ReadingLists() {
     try {
       // TODO: Replace with DynamoDB put operation
       const newList = await createReadingList({
-        userId: '1', // TODO: Get from auth context
+        userId: user?.sub || 'anonymous', // TODO: Get from auth context
         name: newListName,
         description: newListDescription,
         bookIds: [],
