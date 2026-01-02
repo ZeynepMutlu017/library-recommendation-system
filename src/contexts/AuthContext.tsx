@@ -216,3 +216,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
+
+return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}
+
+// ← BURAYA EKLE:
+export function useAuth() {
+  const context = React.useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within AuthProvider');
+  }
+  return context;
+}
