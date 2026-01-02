@@ -46,7 +46,7 @@ export function ReadingLists() {
     try {
       // TODO: Replace with DynamoDB put operation
       const newList = await createReadingList({
-        userId: user?.sub || 'anonymous', // TODO: Get from auth context
+        userId: user?.id || 'anonymous', // TODO: Get from auth context
         name: newListName,
         description: newListDescription,
         bookIds: [],
