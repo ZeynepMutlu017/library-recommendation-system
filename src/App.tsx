@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
@@ -19,7 +19,7 @@ import { VerifyEmail } from '@/pages/VerifyEmail';
  */
 function App() {
   return (
-    <BrowserRouter>
+    
       <AuthProvider>
         <div className="flex flex-col min-h-screen">
           <Header />
@@ -54,7 +54,7 @@ function App() {
           <Footer />
         </div>
       </AuthProvider>
-    </BrowserRouter>
+    
   );
 }
 

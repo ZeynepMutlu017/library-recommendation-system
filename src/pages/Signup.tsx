@@ -61,9 +61,14 @@ export function Signup() {
 
     setIsLoading(true);
     try {
+      console.log("Starting signup for:", email);
       await signup(email, password, name);
-      navigate('/varify-email', { state: {email}});
+      
+      console.log("Signup successful! Attempting to navigate...");
+      
+      navigate('/verify-email', { state: {email}});
     } catch (error) {
+      console.error("AWS Signup Error:", error);
       handleApiError(error);
     } finally {
       setIsLoading(false);
