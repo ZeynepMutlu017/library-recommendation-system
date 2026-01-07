@@ -62,7 +62,7 @@ export function Signup() {
     setIsLoading(true);
     try {
       await signup(email, password, name);
-      navigate('/');
+      navigate('/varify-email', { state: {email}});
     } catch (error) {
       handleApiError(error);
     } finally {

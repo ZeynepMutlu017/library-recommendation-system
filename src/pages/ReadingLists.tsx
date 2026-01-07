@@ -9,10 +9,13 @@ import { ReadingList } from '@/types';
 import { formatDate } from '@/utils/formatters';
 import { handleApiError, showSuccess } from '@/utils/errorHandling';
 
+console.log('FILE LOADED!');
+
 /**
  * ReadingLists page component
  */
 export function ReadingLists() {
+  console.log('COMPONENT FUNCTION CALLED!');
   const { user } = useAuth()
   const [lists, setLists] = useState<ReadingList[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -20,17 +23,23 @@ export function ReadingLists() {
   const [newListName, setNewListName] = useState('');
   const [newListDescription, setNewListDescription] = useState('');
 
+  console.log('ReadingLists component mounted!');
+
   useEffect(() => {
+    console.log('useEffect triggered!');
     loadLists();
   }, []);
 
   const loadLists = async () => {
+    console.log('loadingLists called!');
     setIsLoading(true);
     try {
-      // TODO: Replace with DynamoDB query
+      console.log('Calling getReadingLists');
       const data = await getReadingLists();
+      console.log('Reading lists response:', data);
       setLists(data);
     } catch (error) {
+      console.error('Reading lists error:', error);
       handleApiError(error);
     } finally {
       setIsLoading(false);
@@ -38,6 +47,8 @@ export function ReadingLists() {
   };
 
   const handleCreateList = async () => {
+    console.log('Current user:', user);
+    console.log('user.id:', user?.id);
     if (!newListName.trim()) {
       alert('Please enter a list name');
       return;

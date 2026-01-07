@@ -12,6 +12,7 @@ import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
 import { Admin } from './pages/Admin';
 import { NotFound } from './pages/NotFound';
+import { VerifyEmail } from '@/pages/VerifyEmail';
 
 /**
  * Main App component with routing and layout
@@ -24,6 +25,7 @@ function App() {
           <Header />
           <main className="flex-1">
             <Routes>
+              <Route path="/verify-email" element={<VerifyEmail />} />
               <Route path="/" element={<Home />} />
               <Route path="/books" element={<Books />} />
               <Route path="/books/:id" element={<BookDetail />} />
