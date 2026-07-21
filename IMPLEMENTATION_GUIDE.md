@@ -1174,4 +1174,4 @@ By the end of 4 weeks, you should have:
 
 ---
 
-**Good luck with your implementation! Remember: Read error messages carefully, test frequently, and ask for help when stuck.** 🚀
+
