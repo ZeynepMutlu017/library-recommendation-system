@@ -644,7 +644,6 @@ After completing account setup:
 
 ---
 
-**Congratulations! Your AWS Free Tier account is ready for the Library Recommendation System project!** 🎉
 
 ---
 
